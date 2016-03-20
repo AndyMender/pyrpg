@@ -40,34 +40,40 @@ pc_loc - player location coordinates if they're known
             self.map_array[self.x][self.y] = 1
             # noted player position as 1
 
-    def __north__(self):
+    def __showmap__(self):
+        for row in self.map_array:
+            print(row)
 
+    def __north__(self):
+        self.map_array[self.x][self.y] = self.map_marker if self.map_marker else 0
             # reinstating map marker to current player position if exists,
             # if no map marker, default 0 is reinstated
-        try:
-            if self.map_array[self.x-1][self.y] != 0:
-                self.map_marker = self.map_array[self.x-1][self.y]
-                # checking if next movement position is a map marker; save if yes
-            else:
-                self.map_marker = None
-                # clearing map marker information, otherwise first movement
-                # condition will fail for all subsequent movements
-        except IndexError:
+        if 0 > self.x-1:
             print('Illegal player location or out of map bounds')
+            self.map_array[self.x][self.y] = 1
+            # restoring player position after out-of-bounds movement
             return
+            # cancelling move via 'return' - no other option exists
+        elif self.map_array[self.x-1][self.y] != 0:
+            self.map_marker = self.map_array[self.x-1][self.y]
+            # checking if next movement position is a map marker; save if yes
+        else:
+            self.map_marker = None
+            # clearing map marker information, otherwise first movement
+            # condition will fail for all subsequent movements
         self.x -= 1
         self.map_array[self.x][self.y] = 1
 
     def __west__(self):
         self.map_array[self.x][self.y] = self.map_marker if self.map_marker else 0
-        try:
-            if self.map_array[self.x][self.y-1] != 0:
-                self.map_marker = self.map_array[self.x][self.y-1]
-            else:
-                self.map_marker = None
-        except IndexError:
+        if 0 > self.y-1:
             print('Illegal player location or out of map bounds')
+            self.map_array[self.x][self.y] = 1
             return
+        elif self.map_array[self.x][self.y-1] != 0:
+            self.map_marker = self.map_array[self.x][self.y-1]
+        else:
+            self.map_marker = None
         self.y -= 1
         self.map_array[self.x][self.y] = 1
 
@@ -79,8 +85,9 @@ pc_loc - player location coordinates if they're known
             else:
                 self.map_marker = None
         except IndexError:
-            print('Illegal player location or out of map bounds')
-            return
+           print('Illegal player location or out of map bounds')
+           self.map_array[self.x][self.y] = 1
+           return
         self.x += 1
         self.map_array[self.x][self.y] = 1
 
@@ -93,7 +100,9 @@ pc_loc - player location coordinates if they're known
                 self.map_marker = None
         except IndexError:
             print('Illegal player location or out of map bounds')
+            self.map_array[self.x][self.y] = 1
             return
+
         self.y += 1
         self.map_array[self.x][self.y] = 1
 
@@ -107,6 +116,7 @@ pc_loc - player location coordinates if they're known
                 self.map_marker = None
         except IndexError:
             print('Illegal player location or out of map bounds')
+            self.map_array[self.x][self.y] = 1
             return
         self.map_array[self.x][self.y] = 1
 
@@ -127,5 +137,6 @@ pc_loc - player location coordinates if they're known
                self.map_marker = None
         except IndexError:
             print('Illegal player location or out of map bounds')
+            self.map_array[self.x][self.y] = 1
             return
         self.map_array[self.x][self.y] = 1
