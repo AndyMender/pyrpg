@@ -1,19 +1,3 @@
-if __name__ == '__main__':
-
-    # Generating a 5x5 map using list comprehensions:
-    molag_ker = [5 * [0] for i in range(5)]
-
-    # Placing items on the map by directly addressing x,y coordinates:
-    molag_ker[0][1] = 'b'            # b - blacksmith
-    molag_ker[0][4] = 'g'            # g - general store
-    molag_ker[4][4] = 'e'            # e - village/town/city exit
-    # For procedurally generated maps, markers will be placed randomly within map
-    # bounds (try...except: raise IndexError for handling?)
-
-    # Drawing map for checking:
-    for row in molag_ker:
-        print(row)
-
 class Move():
     '''Handles player movement across a matrix-based map. Takes 2 arguments:
 map_array - matrix defining map dimensions and containing special map markers

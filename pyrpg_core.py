@@ -4,31 +4,32 @@
 # version: 0.1
 # license: GPL/BSD
 
-# This game was created to test the object-oriented (OO) capabilities 
+# This game was created to test the object-oriented (OO) capabilities
 # of Python3 and see how efficiently it fares in text-based game design.
 
 # All of the game files are either redistributed with Python3 or provided
 # on the GitHub repository: https://github.com/AndyMender/pyrpg
 ###############################################################################
 ######################### Library Import Section ##############################
-from pyrpg_charstat import pcStatGen, charAttGen
+from pyrpg_charstat import charAttGen
+from pyrpg_pcaction import Move
 from pyrpg_charclass import NPC, Shopkeeper
-from pyrpg_events import gameover, levelUp
+from pyrpg_events import pcStatGen, levelUp, gameover
 ###############################################################################
 ########################### Main Game Section #################################
 
 # First story entry - part of later game journal?
 print('''
 It is Mondag, Januer 3rd, year 388...
-You arrive by boat at a tiny fishing village of Molag Ker. Upon disembarking, 
-you are approached by a townsguard and guided to a nearby shanty. Inside, clad 
-in dingy robes sits a beared man. He seems extremely old, though his eyes hide 
+You arrive by boat at a tiny fishing village of Molag Ker. Upon disembarking,
+you are approached by a townsguard and guided to a nearby shanty. Inside, clad
+in dingy robes sits a beared man. He seems extremely old, though his eyes hide
 life and eagerness of a youngster.
 ''')
 
 # First player choice - showing impact of key game decisions on plot progress:
 pc_choice = input('''
-Welcome, traveler, Secundus Augustus greets you. You are... *cough!* *cough!* 
+Welcome, traveler, Secundus Augustus greets you. You are... *cough!* *cough!*
 the person we have been awaiting, yes? ''')
 if pc_choice.lower() in ('no', 'n'):
     print('No? Disappointing...Leave at once, fool!')

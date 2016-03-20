@@ -1,13 +1,34 @@
+def pcStatGen():
+    '''Generates player details, like name, age, occupation, etc. This data is
+stored in a save file afterwards.
+'''
+    player_stats = {'Name': '', 'Age': '', 'Birthsign': '', 'Occupation': ''}
+
+    player_name = input('What is your name, traveler? ')
+    player_stats['Name'] = player_name
+
+    player_age = int(input('What is your age? '))
+    player_stats['Age'] = player_age
+    # Later role for player age - conversation remarks, quests, etc.?
+
+    player_sign = input('Many people claim a birthsign. What is yours? ')
+    player_stats['Birthsign'] = player_sign
+
+    player_class = input('What is your occupation? ')
+    player_stats['Occupation'] = player_class
+
+    return player_stats
+
 def levelUp(player_atts):
-    '''Evaluates player experience point gain and increases player level. 
+    '''Evaluates player experience point gain and increases player level.
 Also, allows the player to increase any attribute by 1 point, up to 5 times.
-''' 
-    exp_caps = {500: 2, 1000: 3, 2000: 4, 3000: 5, 4500: 6, 
+'''
+    exp_caps = {500: 2, 1000: 3, 2000: 4, 3000: 5, 4500: 6,
                              6000: 7, 8000: 8, 10000: 9, 13000: 10}
-    
+
     # Assigning player current level to variable:
     prior_level = player_atts['Level']
-    
+
     # Adjusting player level in respect to gained experience points:
     for cap in sorted(exp_caps.keys()):
         if player_atts['Experience'] >= cap:
@@ -20,7 +41,7 @@ Also, allows the player to increase any attribute by 1 point, up to 5 times.
         print('''Congratulations! You have gained an experience level!
 You now have 3 attribute points at your disposal. Distribute them wisely...''')
         att_points = 3
-        
+
         # Spending attribute points:
         while att_points > 0:
             print('Which attribute would you like to increase?')
