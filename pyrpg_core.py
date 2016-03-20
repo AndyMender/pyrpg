@@ -12,9 +12,18 @@
 ###############################################################################
 ######################### Library Import Section ##############################
 from pyrpg_charstat import charAttGen
-from pyrpg_pcaction import Move
+from pyrpg_mapper import Move, mapGenerator
 from pyrpg_charclass import NPC, Shopkeeper
 from pyrpg_events import pcStatGen, levelUp, gameover
+###############################################################################
+########################### Initial Game Setup ################################
+# Generating world cells/maps:
+molag_ker = {'cell name': 'Molag Ker',
+'cell layout': mapGenerator([5*[0] for i in range(5)], b=(3,4), t=(0,0), e=(2,4))}
+# other cells to be generated and populated the same way
+molag_ker_subcells = {'b': [10*[0] for i in range(6)]}
+# also generate and populate subcells within a town/city/etc. with NPCs
+
 ###############################################################################
 ########################### Main Game Section #################################
 

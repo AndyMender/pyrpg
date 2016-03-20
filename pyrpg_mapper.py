@@ -1,3 +1,15 @@
+def mapGenerator(dimension,**coord_dict):
+    '''Generates and populates a map matrix in-place with coordinates of map markers.
+dimension - the dimension of the generated unidimensional map matrix
+**coord_dict - dictionary or sequence of map_marker = (x,y) assignments
+               to populate the map matrix
+'''
+    map_matrix= [dimension * [0] for i in range(dimension)]
+    for map_marker,coords in coord_dict.items():
+        x,y = coords
+        map_matrix[x][y] = map_marker
+    return map_matrix
+
 class Move():
     '''Handles player movement across a matrix-based map. Takes 2 arguments:
 map_array - matrix defining map dimensions and containing special map markers
