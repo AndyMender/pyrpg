@@ -11,7 +11,7 @@
 # **KISS is important - only clarity comes over simplicity and performance**
 
 from pyrpg_mapper import mapGenerator
-from pyrpg_charclass import NPC, Shopkeeper
+from pyrpg_charclass import Shopkeeper
 
 # Creating NPCs for Molag Ker - Blacksmith (level 0 - building cell):
 astesius_kies = Shopkeeper('Astesius Kies', 'Molag Ker - Blacksmith')
@@ -54,6 +54,11 @@ world_cell = {'cell name': 'World',
 'mk': molag_ker}
 # Each level 2 cell map marker has its x,y coordinates in the cell space matrix
 # and refers to a level 1 cell dictionary through a level 2 map marker key.
+
+# Calling NPC by name and cell name from level 2 cell:
+print('Callling NPC by name and cell name from level 2 cell:')
+print('NPC 1: ', world_cell['mk']['b']['npc_1'].name, world_cell['mk']['b']['npc_1'].cell)
+print('NPC 2: ', world_cell['mk']['b']['npc_2'].name, world_cell['mk']['b']['npc_2'].cell)
 
 # Issue #1 - how to automate addressing variable values between cell levels?
 # Issue #2 - build a matrix class (addressing indices, finding values, etc.)
